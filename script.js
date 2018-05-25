@@ -12,7 +12,7 @@ function looksLikeTable(data) {
 
 editor.addEventListener("paste", function(event) {
   var clipboard = event.clipboardData
-  var data = clipboard.getData('text/plain').trim()
+  var data = clipboard.getData('text/plain')
 
   if(looksLikeTable(data)) {
     event.preventDefault()
