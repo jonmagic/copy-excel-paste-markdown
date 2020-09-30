@@ -1,4 +1,4 @@
-# Copy Excel Paste Markdown
+# Copy paste in excle amazing copy paste work better quality mark down table.
 
 Copy a table in Excel (or other spreadsheet programs) and paste it as a Markdown table.
 
