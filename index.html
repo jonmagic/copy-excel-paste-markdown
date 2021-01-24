@@ -3,8 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Copy Excel Paste Markdown</title>
-
+  <title>Copy Excel Paste Markdown/Restructured Text</title>
   <style>
     textarea {
       width: 400px;
@@ -13,9 +12,90 @@
     }
   </style>
 </head>
-
 <body>
-  <textarea id="editor"></textarea>
-  <script src="script.js"></script>
+    <p>
+    <input type="button" value="Clear all" onclick="javascript:eraseText();"> 
+    </p>
+    <table style="width:100%">
+        <tr>
+        <td>
+            <h4>Markdown</h4> 
+    <input type="button" value="Copy" onclick="javascript:copy_markdown();"> 
+        </td>
+        <td>
+            <h4>RST Listtable</h4> 
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <textarea id="editor_markdown"></textarea>
+        </td>
+        <td>
+        <textarea id="editor_rst_listtable"></textarea>
+        </td>
+        </tr>
+        <tr>
+        <td>
+            <h4> RST table variant 1</h4> 
+        </td>
+        <td>
+            <h4> RST table variant 2</h4> 
+        </td>
+        </tr>
+        <tr>
+        <td>
+        <textarea id="editor_rst_variant1"></textarea>
+        </td>
+        <td>
+        <textarea id="editor_rst_variant2"></textarea>
+        </td>
+        </tr>
+    </table>
+    <p>
+    In the above we assume there is always only one header row.
+    In fact it is possible to have several header rows in reStructuredText. 
+    </p>
+<script type="text/javascript">
+function columnWidth(rows, columnIndex) {
+  return Math.max.apply(null, rows.map(function(row) {
+    return row[columnIndex].length
+  }))
+}
+function looksLikeTable(data) {
+// this should still be implemented ? 
+// How do we check whether the data is table data
+  return true
+}
+function eraseText() {
+  document.getElementById("editor_markdown").value = "";
+  document.getElementById("editor_rst_listtable").value = "";
+  document.getElementById("editor_rst_variant1").value = "";
+  document.getElementById("editor_rst_variant2").value = "";
+}
+function copy_markdown() {
+  var el = document.getElementById("editor_markdown")
+  el.select()
+  document.execCommand('copy')
+}
+function copy_rst_variant1() {
+  var el = document.getElementById("editor_rst_variant1")
+  el.select()
+  document.execCommand('copy')
+}
+function copy_rst_variant2() {
+  var el = document.getElementById("editor_rst_variant2")
+  el.select()
+  document.execCommand('copy')
+}
+function copy_rst_listtable() {
+  var el = document.getElementById("editor_rst_listtable")
+  el.select()
+  document.execCommand('copy')
+}
+</script>
+<script src="script_md.js"></script>
+<script src="script_listtable.js"></script>
+<script src="script_variant1.js"></script>
+<script src="script_variant2.js"></script>
 </body>
 </html>

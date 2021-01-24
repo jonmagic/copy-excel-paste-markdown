@@ -1,16 +1,6 @@
-var editor = document.getElementById("editor")
+var editor_markdown = document.getElementById("editor_markdown")
 
-function columnWidth(rows, columnIndex) {
-  return Math.max.apply(null, rows.map(function(row) {
-    return row[columnIndex].length
-  }))
-}
-
-function looksLikeTable(data) {
-  return true
-}
-
-editor.addEventListener("paste", function(event) {
+editor_markdown.addEventListener("paste", function(event) {
   var clipboard = event.clipboardData
   var data = clipboard.getData('text/plain').trim()
 
@@ -36,8 +26,6 @@ editor.addEventListener("paste", function(event) {
     return "| " + row.map(function(column, index) {
       return column + Array(columnWidths[index] - column.length + 1).join(" ")
     }).join(" | ") + " |"
-    row.map
-
   })
   markdownRows.splice(1, 0, "|" + columnWidths.map(function(width, index) {
     return Array(columnWidths[index] + 3).join("-")
