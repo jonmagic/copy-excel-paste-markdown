@@ -29,3 +29,10 @@ This will produce the following markdown table when pasted:
 | dog    | 85lb   | black  |
 | cat    | 18lb   | calico |
 ```
+
+## Contributors
+
+- @jonmagic
+- [@thisdavej](https://github.com/thisdavej)
+- [@JohnTube](https://github.com/JohnTube)
+- [@mhlavacek](https://github.com/mhlavacek)
