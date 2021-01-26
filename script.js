@@ -24,7 +24,24 @@ editor.addEventListener("paste", function(event) {
     console.log(row)
     return row.split("\t")
   })
+
+  var colAlignments = []
+
   var columnWidths = rows[0].map(function(column, columnIndex) {
+    var alignment = "l"
+    var re = /^(\^[lcr])/i
+    var m = column.match(re)
+    if (m) {
+        var align = m[1][1].toLowerCase()
+        if (align === "c") {
+          alignment = "c"
+        } else if (align === "r") {
+          alignment = "r"
+        }
+      }
+    colAlignments.push(alignment)
+    column = column.replace(re, "")
+    rows[0][columnIndex] = column
     return columnWidth(rows, columnIndex)
   })
   var markdownRows = rows.map(function(row, rowIndex) {
@@ -40,7 +57,19 @@ editor.addEventListener("paste", function(event) {
 
   })
   markdownRows.splice(1, 0, "|" + columnWidths.map(function(width, index) {
-    return Array(columnWidths[index] + 3).join("-")
+    var prefix = ""
+    var postfix = ""
+    var adjust = 0
+    var alignment = colAlignments[index]
+    if (alignment === "r") {
+      postfix = ":"
+      adjust = 1
+    } else if (alignment == "c") {
+      prefix = ":"
+      postfix = ":"
+      adjust = 2
+    }
+    return prefix + Array(columnWidths[index] + 3 - adjust).join("-") + postfix
   }).join("|") + "|")
 
   // https://www.w3.org/TR/clipboard-apis/#the-paste-action
