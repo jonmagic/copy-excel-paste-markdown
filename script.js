@@ -20,8 +20,8 @@ editor.addEventListener("paste", function(event) {
     return
   }
 
-  var rows = data.split((/[\n\u0085\u2028\u2029]|\r\n?/g)).map(function(row) {
-    console.log(row)
+  var rows = data.split((/[\u0085\u2028\u2029]|\r\n?/g)).map(function(row) {
+    row = row.replace('\n', ' ')
     return row.split("\t")
   })
 
