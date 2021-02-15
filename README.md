@@ -4,6 +4,17 @@ Copy a table in Excel (or other spreadsheet programs) and paste it as a Markdown
 
 ![demo](https://cl.ly/120h1K2Q1Y3H/Screen%20Recording%202016-08-31%20at%2010.31%20PM.gif)
 
+## Get it running fast with docker
+
+- If you want to use Docker, just build and run the image locally:
+
+  ```sh
+  git clone https://github.com/jonmagic/copy-excel-paste-markdown.git
+  cd copy-excel-paste-markdown
+  docker build -t jonmagic/copy-excel-paste-markdown .
+  docker run -p 8080:80 -d jonmagic/copy-excel-paste-markdown
+  ```
+
 ## Column Alignments
 
 You can optionally specify column alignment information by prepending one of the following to the column heading names in Excel:
