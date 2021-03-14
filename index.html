@@ -20,10 +20,11 @@
         <tr>
         <td>
             <h4>Markdown</h4> 
-    <input type="button" value="Copy" onclick="javascript:copy_markdown();"> 
+            <input type="button" value="Copy" onclick="javascript:copy_markdown();"> 
         </td>
         <td>
             <h4>RST Listtable</h4> 
+            <input type="button" value="Copy" onclick="javascript:copy_rst_listtable();"> 
         </td>
         </tr>
         <tr>
@@ -37,9 +38,11 @@
         <tr>
         <td>
             <h4> RST table variant 1</h4> 
+            <input type="button" value="Copy" onclick="javascript:copy_rst_variant1();"> 
         </td>
         <td>
             <h4> RST table variant 2</h4> 
+            <input type="button" value="Copy" onclick="javascript:copy_rst_variant2();"> 
         </td>
         </tr>
         <tr>
@@ -51,19 +54,10 @@
         </td>
         </tr>
     </table>
-    <p>
-    In the above we assume there is always only one header row.
-    In fact it is possible to have several header rows in reStructuredText. 
-    </p>
 <script type="text/javascript">
-function columnWidth(rows, columnIndex) {
-  return Math.max.apply(null, rows.map(function(row) {
-    return row[columnIndex].length
-  }))
-}
 function looksLikeTable(data) {
 // this should still be implemented ? 
-// How do we check whether the data is table data
+// How do we check whether the data is table data?
   return true
 }
 function eraseText() {
@@ -93,9 +87,7 @@ function copy_rst_listtable() {
   document.execCommand('copy')
 }
 </script>
-<script src="script_md.js"></script>
-<script src="script_listtable.js"></script>
-<script src="script_variant1.js"></script>
-<script src="script_variant2.js"></script>
+<script src="conversion_functions.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
